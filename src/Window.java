@@ -59,23 +59,34 @@ public class Window{
 		rightList = new JList<String>(right);
 		JButton Add = new JButton(">>");		
 		JButton Remove = new JButton("<<");
+		JMenuBar menuBar = new JMenuBar();
+		JMenu menuFile = new JMenu("File");
+		JMenuItem menuItemLoad = new JMenuItem("Load");	
+		JMenuItem menuItemSave = new JMenuItem("Save");
+		JMenuItem menuExit = new JMenuItem("Exit");
 
 		frame.setBounds(100, 100, 500, 450);
 		leftList.setBounds(0, 22, 169, 392);
 		rightList.setBounds(321, 22, 163, 392);
 		Add.setBounds(217, 148, 49, 31);
 		Remove.setBounds(217, 183, 49, 31);
+		menuBar.setBounds(0, 0, 484, 21);
 
 		frame.getContentPane().add(leftList);
 		frame.getContentPane().add(rightList);
 		frame.getContentPane().add(Add);
 		frame.getContentPane().add(Remove);
+		frame.getContentPane().add(menuBar);
 		frame.getContentPane().setLayout(null);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		addParts();		
-		
+		menuBar.add(menuFile);
+		menuFile.add(menuItemLoad);
+		menuFile.add(menuItemSave);
+		menuFile.add(menuExit);
+
 		private void addParts() {
 			String[] parts = {"Case", "Motherboard", "CPU", "GPU", "PSU", "RAM", "HDD"};
 			for (int i = 0; i < parts.length; i++) {
