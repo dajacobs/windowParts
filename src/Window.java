@@ -108,8 +108,8 @@ public class Window{
 		menuItemLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					//right.clear();
-					//load();
+					right.clear();
+					load();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -119,7 +119,7 @@ public class Window{
 		menuItemSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					//save();
+					save();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
