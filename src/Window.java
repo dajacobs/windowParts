@@ -86,13 +86,6 @@ public class Window{
 		menuFile.add(menuItemLoad);
 		menuFile.add(menuItemSave);
 		menuFile.add(menuExit);
-
-		private void addParts() {
-			String[] parts = {"Case", "Motherboard", "CPU", "GPU", "PSU", "RAM", "HDD"};
-			for (int i = 0; i < parts.length; i++) {
-				left.addElement(parts[i]);
-			}			
-		}
 		
 		Add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -112,4 +105,11 @@ public class Window{
 			}
 		});
 	}
+	
+	private void addParts() {
+			String[] parts = {"Case", "Motherboard", "CPU", "GPU", "PSU", "RAM", "HDD"};
+			for (int i = 0; i < parts.length; i++) {
+				left.addElement(parts[i]);
+			}			
+		}
 }
