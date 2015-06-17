@@ -104,9 +104,37 @@ public class Window{
 				frame.getContentPane().add(rightList);
 			}
 		});
+
+		menuItemLoad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					//right.clear();
+					//load();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
+		menuItemSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					//save();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
+		JMenuItem menuExit = new JMenuItem("Exit");
+		menuExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 	}
 	
-	private void addParts() {
+	protected void addParts() {
 			String[] parts = {"Case", "Motherboard", "CPU", "GPU", "PSU", "RAM", "HDD"};
 			for (int i = 0; i < parts.length; i++) {
 				left.addElement(parts[i]);
