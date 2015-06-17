@@ -126,7 +126,6 @@ public class Window{
 			}
 		});
 
-		JMenuItem menuExit = new JMenuItem("Exit");
 		menuExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
@@ -134,10 +133,42 @@ public class Window{
 		});
 	}
 	
-	protected void addParts() {
+	private void addParts() {
 			String[] parts = {"Case", "Motherboard", "CPU", "GPU", "PSU", "RAM", "HDD"};
 			for (int i = 0; i < parts.length; i++) {
 				left.addElement(parts[i]);
 			}			
+	}
+
+	private void load() throws Exception {
+		try {
+			File file = new File("file.xml");
+			JAXBContext jaxbContext = JAXBContext.newInstance(Parts.class);
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			Parts loadParts = (Parts) jaxbUnmarshaller.unmarshal(file);
+			
+			for (int i = 0; i < loadParts.name.size(); i++) {
+				list.addElement(loadParts.name.get(i));
+			}
+			rightList.setModel(list);
+		} catch (JAXBException e){
+			e.printStackTrace();
 		}
+	}
+
+	public void save() throws Exception {
+		List<String> list = part.getName();
+		int size = rightList.getModel().getSize();
+		for (int i = 0; i < size; i++) {
+			list.add(rightList.getModel().getElementAt(i));
+		}
+		try {
+			File file = new File("file.xml");
+			JAXBContext jaxbContext = JAXBContext.newInstance(Parts.class);
+			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+			jaxbMarshaller.marshal(part, file);
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+	}
 }
