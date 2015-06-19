@@ -29,11 +29,11 @@ import java.io.File;
 
 /**
  * Window class to display the GUI.
- * {@value} list 
- * {@value} left, right 
- * {@value} leftList, rightList 
- * {@value} part 
- * {@value} frame
+ * {@value} list The default model list to hold strings.
+ * {@value} left, right The panel default model list to hold jlists.
+ * {@value} leftList, rightList The left and right panel jlists in the panels. 
+ * {@value} part The computer parts constructor for XML.
+ * {@value} frame The jframe window for the content pane with extended swing support.
  **/
 public class Window{
 	final DefaultListModel<String> list = new DefaultListModel<>();
@@ -61,37 +61,36 @@ public class Window{
 	
 	/**
  	 * Initialize the contents of the frame for the GUI design.
- 	 * {@value} frame
-	 * {@value} left
-	 * {@value} right
-	 * {@value} leftList
-	 * {@value} rightList
-	 * {@value} Add
-	 * {@value} Remove
-	 * {@value} menuBar
-	 * {@value} menuFile
-	 * {@value} menuItemLoad
-	 * {@value} menuItemSave
-	 * {@value} menuExit
-	 * @param frame.setBounds()
-	 * @param leftList.setBounds()
-	 * @param rightList.setBounds()
-	 * @param Add.setBounds()
-	 * @param Remove.setBounds()
-	 * @param menuBar.setBounds()
-	 * @param frame.setBounds()
-	 * @param frame.getContentPane().add(leftList)
-	 * @param frame.getContentPane().add(rightList)
-	 * @param frame.getContentPane().add(Add)
-	 * @param frame.getContentPane().add(Remove)
-	 * @param frame.getContentPane().add(menuBar)
-	 * @param frame.getContentPane().setLayout(null)
-	 * @param frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
-	 * @param addParts()
-	 * @param menuBar.add(menuFile)
-	 * @param menuFile.add(menuItemLoad)
-	 * @param menuFile.add(menuItemSave)
-	 * @param menuFile.add(menuExit)
+ 	 * {@value} frame The instantiated jframe object.
+	 * {@value} left The instantiated left panel object.
+	 * {@value} right The instantiated right panel object.
+	 * {@value} leftList The instantiated left jlist object.
+	 * {@value} rightList The instantiated right jlist object.
+	 * {@value} Add The button for adding to the right objects to the righ panel.
+	 * {@value} Remove The button for removing objects from the righ panel.
+	 * {@value} menuBar The menu bar to contain menu items for selection.
+	 * {@value} menuFile The menu to contain drop-down selectable menu items.
+	 * {@value} menuItemLoad The selection item to load XML to object format.
+	 * {@value} menuItemSave The selection item to save object to XML format.
+	 * {@value} menuExit The selection item to exit the application entirely.
+	 * @param frame.setBounds() Sets the size and location of the content pane that contains all objects.
+	 * @param leftList.setBounds() Sets the size and location of the left jlist in the content pane.
+	 * @param rightList.setBounds() Sets the size and location of the right jlist in the content pane.
+	 * @param Add.setBounds() Sets the size and location of the add button in the content pane.
+	 * @param Remove.setBounds() Sets the size and location of the remove button in the content pane.
+	 * @param menuBar.setBounds() Sets the size and location of the menu bar in the content pane.
+	 * @param frame.getContentPane().add(leftList) Adds the left jlist to the content pane.
+	 * @param frame.getContentPane().add(rightList) Adds the right jlist to the content pane.
+	 * @param frame.getContentPane().add(Add) Adds the add button to the content pane.
+	 * @param frame.getContentPane().add(Remove) Adds the remove button to the content pane.
+	 * @param frame.getContentPane().add(menuBar) Adds the menu bar to the content pane.
+	 * @param frame.getContentPane().setLayout(null) Sets the layout manager to null, with absolute positioning. 
+	 * @param frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) The jframe GUI panel exits upon close.
+	 * @param addParts() Method execution to add computer parts to left panel.
+	 * @param menuBar.add(menuFile) Adds the file menu selection to the menu bar panel.
+	 * @param menuFile.add(menuItemLoad) Adds the load selection to the file menu drop-down.
+	 * @param menuFile.add(menuItemSave) Adds the save selection to the file menu drop-down.
+	 * @param menuFile.add(menuExit) Adds the exit selection to the file menu drop-down.
 	 **/
 	public void initialize() {
 		frame = new JFrame();
@@ -131,10 +130,10 @@ public class Window{
 		
 		/**
 		 * Action listener for the Add button when selected.
-		 * {@value} index
-		 * @param list.addElement(leftList.getModel().getElementAt(index))
-		 * @param rightList.setModel(list)
-		 * @param frame.getContentPane().add(rightList)
+		 * {@value} index The selected index element by the user from the left jlist.
+		 * @param list.addElement(leftList.getModel().getElementAt(index)) Adds the element selected by the user at the specified index from the model to the list.
+		 * @param rightList.setModel(list) The right jlist model is set with the list content elements.
+		 * @param frame.getContentPane().add(rightList) The content pane is updated and added with the right jlist contents.
 		 **/
 		Add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -147,10 +146,10 @@ public class Window{
 		
 		/**
 		 * Action listener for the Remove button when selected.
-		 * {@value} index
-		 * @param list.removeElement(rightList.getModel().getElementAt(index))
-		 * @param rightList.setModel(list)
-		 * @param frame.getContentPane().add(rightList)
+		 * {@value} index The selected index element by the user from the right jlist.
+		 * @param list.removeElement(rightList.getModel().getElementAt(index)) Removes the element selected by the user at the specified index from the model to the list. 
+		 * @param rightList.setModel(list) The right jlist model is set with the list content elements.
+		 * @param frame.getContentPane().add(rightList) The content pane is updated and added with the right jlist contents.
 		 **/
 		Remove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -163,9 +162,9 @@ public class Window{
 
 		/**
 		 * Action listener for the Load menu item when selected.
-		 * @param right.clear()
-		 * @param load()
-		 * @exception
+		 * @param right.clear() Method execution to clear the right panel of its elements.
+		 * @param load() Method execution of load to read and write XML to object.
+		 * @exception Prints the stack trace of the error upon thrown.
 		 **/
 		menuItemLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -180,8 +179,8 @@ public class Window{
 
 		/**
 		 * Action listener for the Save menu item when selected.
-		 * @param save()
-		 * @exception
+		 * @param save() Method execution of save to write object to XML.
+		 * @exception Prints the stack trace of the error upon thrown.
 		 **/
 		menuItemSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -195,7 +194,7 @@ public class Window{
 
 		/**
 		 * Action listener for the Exit menu item when selected.
-		 * @param System.exit(0)
+		 * @param System.exit(0) The application is completed shut down.
 		 **/
 		menuExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
