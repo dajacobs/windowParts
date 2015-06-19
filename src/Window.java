@@ -27,6 +27,14 @@ import java.util.List;
 /** Java IO Imports. **/
 import java.io.File;
 
+/**
+ * Window class to display the GUI.
+ * {@value} list 
+ * {@value} left, right 
+ * {@value} leftList, rightList 
+ * {@value} part 
+ * {@value} frame
+ **/
 public class Window{
 	final DefaultListModel<String> list = new DefaultListModel<>();
 	protected DefaultListModel<String> left, right;
@@ -51,6 +59,40 @@ public class Window{
 		initialize();
 	}
 	
+	/**
+ 	 * Initialize the contents of the frame for the GUI design.
+ 	 * {@value} frame
+	 * {@value} left
+	 * {@value} right
+	 * {@value} leftList
+	 * {@value} rightList
+	 * {@value} Add
+	 * {@value} Remove
+	 * {@value} menuBar
+	 * {@value} menuFile
+	 * {@value} menuItemLoad
+	 * {@value} menuItemSave
+	 * {@value} menuExit
+	 * @param frame.setBounds()
+	 * @param leftList.setBounds()
+	 * @param rightList.setBounds()
+	 * @param Add.setBounds()
+	 * @param Remove.setBounds()
+	 * @param menuBar.setBounds()
+	 * @param frame.setBounds()
+	 * @param frame.getContentPane().add(leftList)
+	 * @param frame.getContentPane().add(rightList)
+	 * @param frame.getContentPane().add(Add)
+	 * @param frame.getContentPane().add(Remove)
+	 * @param frame.getContentPane().add(menuBar)
+	 * @param frame.getContentPane().setLayout(null)
+	 * @param frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+	 * @param addParts()
+	 * @param menuBar.add(menuFile)
+	 * @param menuFile.add(menuItemLoad)
+	 * @param menuFile.add(menuItemSave)
+	 * @param menuFile.add(menuExit)
+	 **/
 	public void initialize() {
 		frame = new JFrame();
 		left = new DefaultListModel<String>();
@@ -87,6 +129,13 @@ public class Window{
 		menuFile.add(menuItemSave);
 		menuFile.add(menuExit);
 		
+		/**
+		 * Action listener for the Add button when selected.
+		 * {@value} index
+		 * @param list.addElement(leftList.getModel().getElementAt(index))
+		 * @param rightList.setModel(list)
+		 * @param frame.getContentPane().add(rightList)
+		 **/
 		Add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int index = leftList.getSelectedIndex();
@@ -96,6 +145,13 @@ public class Window{
  			}
 		});
 		
+		/**
+		 * Action listener for the Remove button when selected.
+		 * {@value} index
+		 * @param list.removeElement(rightList.getModel().getElementAt(index))
+		 * @param rightList.setModel(list)
+		 * @param frame.getContentPane().add(rightList)
+		 **/
 		Remove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int index = rightList.getSelectedIndex();
@@ -105,6 +161,12 @@ public class Window{
 			}
 		});
 
+		/**
+		 * Action listener for the Load menu item when selected.
+		 * @param right.clear()
+		 * @param load()
+		 * @exception
+		 **/
 		menuItemLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -116,6 +178,11 @@ public class Window{
 			}
 		});
 
+		/**
+		 * Action listener for the Save menu item when selected.
+		 * @param save()
+		 * @exception
+		 **/
 		menuItemSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -126,6 +193,10 @@ public class Window{
 			}
 		});
 
+		/**
+		 * Action listener for the Exit menu item when selected.
+		 * @param System.exit(0)
+		 **/
 		menuExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
@@ -133,13 +204,28 @@ public class Window{
 		});
 	}
 	
+	/**
+	 * Method to populate the left panel with computer parts.
+	 * {@value} parts
+	 * @param left.addElement(parts[i])
+	 **/
 	private void addParts() {
 			String[] parts = {"Case", "Motherboard", "CPU", "GPU", "PSU", "RAM", "HDD"};
 			for (int i = 0; i < parts.length; i++) {
 				left.addElement(parts[i]);
 			}			
 	}
-
+	
+	/**
+	 * Load method to unmarshall XML to Object.
+	 * {@value} file 
+	 * {@value} jaxbContext 
+	 * {@value} jaxbUmarshaller 
+	 * {@value} loadParts
+	 * @param list.addElement(loadParts.name.get(i))
+	 * @param rightList.setModel(list) 
+	 * @exception 
+	 **/
 	private void load() throws Exception {
 		try {
 			File file = new File("file.xml");
@@ -155,7 +241,18 @@ public class Window{
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Save method to marshall Object to XML.
+	 * {@value} list 
+	 * {@value} size 
+	 * {@value} file 
+	 * {@value} jaxbContext 
+	 * {@value} jaxbMarshaller
+	 * @param list.add(rightList.getModel().getElementAt(i))
+	 * @param jaxbMarshaller.marshal(part, file)
+	 * @exception 
+	 **/
 	public void save() throws Exception {
 		List<String> list = part.getName();
 		int size = rightList.getModel().getSize();
