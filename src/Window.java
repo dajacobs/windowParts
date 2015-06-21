@@ -33,7 +33,7 @@ import java.io.File;
  * {@value} left, right The panel default model list to hold jlists.
  * {@value} leftList, rightList The left and right panel jlists in the panels. 
  * {@value} part The computer parts constructor for XML.
- * {@value} frame The jframe window for the content pane with extended swing support.
+ * {@value} frame The jframe window object for the content pane with extended swing support.
  **/
 public class Window{
 	final DefaultListModel<String> list = new DefaultListModel<>();
