@@ -194,7 +194,7 @@ public class Window{
 
 		/**
 		 * Action listener for the Exit menu item when selected.
-		 * @param System.exit(0) The application is completed shut down.
+		 * @param System.exit(0) The application is completely shut down.
 		 **/
 		menuExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -217,13 +217,13 @@ public class Window{
 	
 	/**
 	 * Load method to unmarshall XML to Object.
-	 * {@value} file 
-	 * {@value} jaxbContext 
-	 * {@value} jaxbUmarshaller 
-	 * {@value} loadParts
-	 * @param list.addElement(loadParts.name.get(i))
-	 * @param rightList.setModel(list) 
-	 * @exception 
+	 * {@value} file File object to load XML object formatting.
+	 * {@value} jaxbContext Abstraction for handling XML/Java bindings.
+	 * {@value} jaxbUnmarshaller Wrapper functionality for unmarshaller.
+	 * {@value} loadParts Parts object to contain data from XML format.
+	 * @param list.addElement(loadParts.name.get(i)) Adds the elements contained in the parts object to the list object.
+	 * @param rightList.setModel(list) Sets the right jlist model to contain the list objects elements. 
+	 * @exception Prints the stack trace of the error upon thrown.
 	 **/
 	private void load() throws Exception {
 		try {
@@ -243,14 +243,14 @@ public class Window{
 	
 	/**
 	 * Save method to marshall Object to XML.
-	 * {@value} list 
-	 * {@value} size 
-	 * {@value} file 
-	 * {@value} jaxbContext 
-	 * {@value} jaxbMarshaller
-	 * @param list.add(rightList.getModel().getElementAt(i))
-	 * @param jaxbMarshaller.marshal(part, file)
-	 * @exception 
+	 * {@value} list String object instantiated to the parts object.
+	 * {@value} size Length of the right jlist.
+	 * {@value} file File object to write XML object formatting.
+	 * {@value} jaxbContext Entry point for JAXB API.
+	 * {@value} jaxbMarshaller Wrapper functionality for marshaller.
+	 * @param list.add(rightList.getModel().getElementAt(i)) Adds the elements contained in the parts object to the list object.
+	 * @param jaxbMarshaller.marshal(part, file) Writes the data using the parts object to the file object.
+	 * @exception Prints the stack trace of the error upon thrown.
 	 **/
 	public void save() throws Exception {
 		List<String> list = part.getName();
